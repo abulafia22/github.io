@@ -34,18 +34,18 @@
     <section class="analysis">
         <h3>Warum war die E-Mail verdächtig?</h3>
         <ul>
-            <li><span class="flag">Falsche Dringlichkeit:</span> Die Drohung "In 24 Stunden gesperrt" soll dich unter Druck setzen.</li>
-            <li><span class="flag">Unklare Absenderadresse:</span> Die Adresse "support@iserv-it-service.de" klingt offiziell, ist aber nicht die echte Domain deiner Schule.</li>
-            <li><span class="flag">Der Link-Check:</span> Wenn du mit der Maus über den Button fährst, siehst du die echte Ziel-URL.</li>
-            <li><span class="flag">Generische Anrede:</span> Ein einfaches "Hallo" statt deines Namens ist ein typisches Warnsignal.</li>
+            <li><span class="flag">Falsche Dringlichkeit:</span> "In 24 Stunden gesperrt" – Hacker setzen dich unter Druck, damit du nicht nachdenkst.</li>
+            <li><span class="flag">Unklare Absenderadresse:</span> War die E-Mail wirklich von @deine-schule.de? Oft verbergen sich kryptische Adressen dahinter.</li>
+            <li><span class="flag">Der Link-Check:</span> Wenn du mit der Maus über den Button fährst (ohne zu klicken), siehst du unten im Browser, dass die URL nicht zu IServ führt.</li>
+            <li><span class="flag">Generische Anrede:</span> "Hallo" statt deinem echten Namen ist bei offiziellen IT-Meldungen selten.</li>
         </ul>
     </section>
 
     <h3>Allgemeine Schutzregeln</h3>
     <ul>
-        <li><strong>Niemals Passwörter per Link:</strong> Seriöse Dienste fragen niemals per E-Mail nach deinem Passwort.</li>
-        <li><strong>Zwei-Faktor-Authentisierung (2FA):</strong> Nutze 2FA, um dein Konto doppelt zu schützen.</li>
-        <li><strong>Im Zweifel nachfragen:</strong> Frag deine Lehrer persönlich, ob eine Mail echt ist.</li>
+        <li><strong>Niemals Passwörter per Link:</strong> Seriöse Dienste (wie IServ, Google oder Banken) fragen dich niemals per E-Mail nach deinem Passwort.</li>
+        <li><strong>Zwei-Faktor-Authentisierung (2FA):</strong> Aktiviere 2FA, wo immer es möglich ist. Dann nützt Hackern selbst dein Passwort nichts.</li>
+        <li><strong>Im Zweifel nachfragen:</strong> Frag deine Lehrer oder die IT-Abteilung persönlich, ob eine Mail echt ist.</li>
     </ul>
 
     <p style="text-align: center;">
@@ -72,7 +72,7 @@
             q: "Was ist der sicherste Weg, um zu prüfen, wohin ein Link in einer E-Mail wirklich führt?",
             a: ["Auf den Link klicken und schauen, was passiert.", "Mit der Maus über den Link fahren (Hover), ohne zu klicken.", "Sich auf das Logo in der E-Mail verlassen."],
             correct: 1,
-            info: "Richtig! Der 'Hover-Trick' zeigt dir die echte Ziel-URL unten im Browser an."
+            info: "Richtig! Der 'Hover-Trick' zeigt dir die echte Ziel-URL unten links im Browser an."
         },
         {
             q: "Warum nutzen Hacker oft Drohungen wie 'Dein Account wird in 24h gelöscht'?",
@@ -81,22 +81,10 @@
             info: "Korrekt. Zeitdruck ist eine psychologische Falle. Bleib immer ruhig!"
         },
         {
-            q: "Was fällt dir an der Adresse 'support@iserv-it-service.de' auf?",
-            a: ["Sie ist absolut sicher, weil 'IServ' drin vorkommt.", "Sie sieht echt aus, ist aber wahrscheinlich nicht die offizielle Schul-Adresse.", "Nichts, das ist die Standardadresse für alle Schulen."],
-            correct: 1,
-            info: "Genau! Hacker nutzen oft Namen, die dem Original ähnlich sehen, aber nicht identisch sind."
-        },
-        {
-            q: "Warum ist eine Anrede wie 'Hallo,' oder 'Sehr geehrter Kunde' verdächtig?",
-            a: ["Weil die Schule dich normalerweise persönlich mit deinem Namen anspricht.", "Weil Hacker keine Namen schreiben dürfen.", "Das ist gar nicht verdächtig, sondern normal."],
+            q: "Was solltest du tun, wenn du eine verdächtige E-Mail von deiner 'Bank' oder 'Schule' erhältst?",
+            a: ["Die offizielle Webseite manuell im Browser eingeben und dort nachsehen.", "Sofort das Passwort ändern, indem du dem Link in der Mail folgst.", "Die E-Mail an alle Freunde weiterleiten, um sie zu warnen."],
             correct: 0,
-            info: "Richtig. Fehlende persönliche Anreden sind ein klassisches Merkmal von Massen-Phishing."
-        },
-        {
-            q: "Was solltest du tun, wenn du eine verdächtige E-Mail erhältst?",
-            a: ["Die offizielle Webseite manuell im Browser eingeben und dort nachsehen.", "Sofort das Passwort ändern, indem du dem Link in der Mail folgst.", "Die E-Mail an alle Freunde weiterleiten."],
-            correct: 0,
-            info: "Genau. Nutze immer bekannte, offizielle Wege und niemals Links aus solchen Mails."
+            info: "Genau. Nutze immer bekannte, offizielle Wege und niemals Links aus unaufgeforderten E-Mails."
         }
     ];
 
@@ -130,11 +118,11 @@
             feedback.style.color = "#e74c3c";
         }
         
-        document.getElementById('next-btn').style.display = 'block';
         if (currentQ < questions.length - 1) {
-            document.getElementById('next-btn').innerText = "Nächste Frage";
+            document.getElementById('next-btn').style.display = 'block';
         } else {
             document.getElementById('next-btn').innerText = "Quiz beendet!";
+            document.getElementById('next-btn').style.display = 'block';
             document.getElementById('next-btn').onclick = () => {
                 alert("Super! Du bist nun besser gegen Phishing geschützt. Teile dein Wissen mit anderen!");
             };
