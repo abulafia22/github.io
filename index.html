@@ -35,7 +35,7 @@
         <h3>Warum war die E-Mail verdächtig?</h3>
         <ul>
             <li><span class="flag">Falsche Dringlichkeit:</span> Die Drohung "In 24 Stunden gesperrt" soll dich unter Druck setzen.</li>
-            <li><span class="flag">Unklare Absenderadresse:</span> Die Adresse "iserv.mendax@web.de" klingt offiziell, ist aber nicht die echte Domain deiner Schule.</li>
+            <li><span class="flag">Unklare Absenderadresse:</span> Die Adresse "iserv.mendax@web.de" klingt offiziell, ist aber nicht die echte Domain unserer Schule.</li>
             <li><span class="flag">Der Link-Check:</span> Wenn du mit der Maus über den Button fährst, siehst du die echte Ziel-URL.</li>
             <li><span class="flag">Generische Anrede:</span> Ein einfaches "Hallo" statt deines Namens ist ein typisches Warnsignal.</li>
         </ul>
@@ -68,6 +68,21 @@
 </section>
 
 <script>
+    // --- KONFIGURATION ---
+    const schoolID = "sid26-test-projekt"; 
+
+    // --- TRACKING LOGIK (CORS-sicher via Image-Pixel) ---
+    function trackEvent(eventName) {
+        const img = new Image();
+        // GoatCounter als Pixel-Dienst (DSGVO-konform)
+        img.src = `https://${schoolID}.goatcounter.com/count?p=/${eventName}`;
+        console.log("Tracking gesendet: " + eventName);
+    }
+
+    // Zähler 1: Sofort beim Laden (Phishing-Klick)
+    trackEvent("phishing_erfolg");
+
+    // --- QUIZ LOGIK ---
     const questions = [
         {
             q: "Was ist der sicherste Weg, um zu prüfen, wohin ein Link in einer E-Mail wirklich führt?",
@@ -135,9 +150,11 @@
         if (currentQ < questions.length - 1) {
             document.getElementById('next-btn').innerText = "Nächste Frage";
         } else {
+            // Zähler 2: Quiz erfolgreich beendet
+            trackEvent("quiz_beendet");
             document.getElementById('next-btn').innerText = "Quiz beendet!";
             document.getElementById('next-btn').onclick = () => {
-                alert("Super! Du bist nun besser gegen Phishing geschützt. Teile dein Wissen mit anderen!");
+                alert("Super! Du bist nun besser gegen Phishing geschützt.");
             };
         }
     }
@@ -149,10 +166,9 @@
 
     loadQuestion();
 </script>
-
-    <footer>
-        &copy; 2026 Safer Internet Day Projekt - Für ein sichereres Netz für alle.
-    </footer>
+<footer>
+    &copy; 2026 Safer Internet Day Projekt - Für ein sichereres Netz für alle.
+</footer>
 </div>
 
 </body>
